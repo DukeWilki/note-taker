@@ -1,11 +1,5 @@
-// ===============================================================================
-// LOAD DATA
-// We are linking our routes to a series of "data" sources.
-// These data sources hold arrays of information on table-data, waitinglist, etc.
-// ===============================================================================
-
 const fs = require('fs');
-
+const { v4: uuidv4 } = require('uuid');
 
 
 // ===============================================================================
@@ -16,24 +10,26 @@ module.exports = function(app) {
 
   app.get('/api/notes', (req, res) => {
     // retrieve all the notes from json
+    res.json(notes);
+  });
+
     
-  })
+  // })
 
   app.post('/api/notes', (req, res) => {
-
     // generate a uuid (google npm uuid)
-
+    uuidv4(); // -> '6c84fb90-12c4-11e1-840d-7b25c5ee775a' 
     // grab the req payload
     const title = req.body.title;
     const text = req.body.text;
 
     const newNote = {
-      id: uuid,
+      id: uuidv4,
       title: title,
       text: text,
     }
 
-    const jsonData = fs.readFileSync('./../db/db.json', 'utf-8');
+    const jsonData = fs.readFileSync('./../db/db.json', 'utf8');
 
     const notes = JSON.parse(jsonData) || [];
 
@@ -46,7 +42,6 @@ module.exports = function(app) {
       data: notes,
     })
 
-
   })
 
   app.delete('/api/notes/:id', (req, res) => {
@@ -56,7 +51,6 @@ module.exports = function(app) {
 
     // filter out the note that has the id passed in, 
     // resave the data to db.json
-
 
   })
 };
