@@ -8,12 +8,23 @@ const { v4: uuidv4 } = require('uuid');
 
 module.exports = function(app) {
 
+
+
+
+
   app.get('/api/notes', (req, res) => {
     // retrieve all the notes from json
-    res.json(notes);
-  });
+    // res.json(notes);
 
-    
+
+  fs.readFile("db/db.json","utf8", (err, data) => {
+    if (err) throw err;
+    var notes = JSON.parse(data);
+    // return(notes);
+    res.json(notes);
+  }); 
+
+})
   // })
 
   app.post('/api/notes', (req, res) => {
