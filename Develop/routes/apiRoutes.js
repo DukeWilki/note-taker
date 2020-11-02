@@ -29,14 +29,16 @@ module.exports = function(app) {
       text: text,
     }
 
-    const jsonData = fs.readFileSync('./../db/db.json', 'utf8');
+    // const jsonData = fs.readFileSync('./../db/db.json', 'utf8');
+    const jsonData = fs.readFileSync(__dirname + '/../db/db.json', 'utf8');
 
     const notes = JSON.parse(jsonData) || [];
 
     // create a new note in json
     notes.push(newNote)
 
-    fs.writeFileSync('./../db/db.json', JSON.stringify(notes) )
+    // fs.writeFileSync('./../db/db.json', JSON.stringify(notes) )
+    fs.writeFileSync(__dirname + '/../db/db.json', JSON.stringify(notes))
 
     res.json({
       data: notes,
