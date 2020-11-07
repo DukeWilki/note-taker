@@ -43,12 +43,33 @@ module.exports = function(app) {
     })
   })
 
-//   app.delete("/api/index/:id", function(req, res) {
-//     var deleter = notes.filter(note => note.id !== parseInt(req.params.id)); 
-//     fs.writeFileSync(__dirname + '/../db/db.json', JSON.stringify(deleter))
-//     notes = deleter;
-//     res.json(true);
-// });
+//   app.delete("/api/notes/:id", function(req, res) {
+
+    
+//  });
+
+// app.delete(“/api/notes/:id”, function (req, res) {
+//   console.log(“trying to delete” + req.params.id);
+//   const indexToDelete = DBnotes.findIndex(function (currentNote) {
+//       if (currentNote.id == req.params.id)
+//           return true
+//       else
+//           return false
+//   });
+//   DBnotes.splice(indexToDelete, 1);
+//   return res.json(DBnotes);
+// })
+
+
+
+
+  app.delete("/api/index/:id", function(req, res) {
+    console.log("tyring to delete"+ req.params.id);
+    var deleter = notes.filter(note => note.id !== parseInt(req.params.id)); 
+    fs.writeFileSync(__dirname + '/../db/db.json', JSON.stringify(deleter))
+    notes = deleter;
+    res.json(true);
+});
 
   // app.delete('/api/notes/:id', (req, res) => {
   //   // 

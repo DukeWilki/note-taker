@@ -3,7 +3,7 @@ const $noteText = $(".note-textarea");
 const $saveNoteBtn = $(".save-note");
 const $newNoteBtn = $(".new-note");
 const $noteList = $(".list-container .list-group");
-
+// debugger;
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
 
@@ -26,6 +26,8 @@ const saveNote = (note) => {
 
 // A function for deleting a note from the db
 const deleteNote = (id) => {
+  // console.log("del");
+  console.log("delete4");
   return $.ajax({
     url: "api/notes/" + id,
     method: "DELETE",
@@ -64,16 +66,19 @@ const handleNoteSave = function () {
 
 // Delete the clicked note
 const handleNoteDelete = function (event) {
+  console.log("delete1");
   // prevents the click listener for the list from being called when the button inside of it is clicked
   event.stopPropagation();
-  console.log("delete");
+  console.log("delete2");
   const note = $(this).parent(".list-group-item").data();
+  console.log("delete3 " + activeNote.id + " " + activeNote.title + " " + activeNote.text + " " + note.id);
 
   if (activeNote.id === note.id) {
     activeNote = {};
   }
 
   deleteNote(note.id).then(() => {
+    console.log("del");
     getAndRenderNotes();
     renderActiveNote();
   });

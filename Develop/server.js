@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 8080;
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());  
+app.use(express.static("public"));
 
 // allow the server to serve up static files within the public folder
 app.use(express.static('public'));
