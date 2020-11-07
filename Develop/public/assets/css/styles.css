@@ -20,12 +20,19 @@ html, body {
   width: 100%;
   outline: none;
   border: none;
+  font-family: 'Gochi Hand', cursive;
 }
+
 
 .note-textarea {
   resize: none;
   height: calc(100% - 63px);
   padding-top: 15px;
+  font-family: 'Gochi Hand', cursive;
+  font-size: large;
+  /* background-image: url(https://images.freecreatives.com/wp-content/uploads/2015/10/lined_paper_with-smooth-texture.jpg);
+  background-image: url(https://images.freecreatives.com/wp-content/uploads/2015/10/old_lined_paper.jpg); */
+  background-image: url(https://images.freecreatives.com/wp-content/uploads/2015/10/lined_paper-texture.jpg);
 }
 
 .note-title {
@@ -43,6 +50,8 @@ html, body {
   border-bottom: none;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
+  font-family: 'Gochi Hand', cursive;
+  font-size: large;
 }
 
 .list-container {
