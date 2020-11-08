@@ -32,8 +32,8 @@ A demo ofthis app is available on https://drive.google.com/file/d/1k01eXmBDt8mJY
 ## Design
 Nice notebooks are very popular with corporates so a vintage design has been used. This is expressed with the quill on the home page, rustic paper on the header and off-white ruled paper for the main text. This was done to add a bit of classsiness and warmth to the UI.
 
-![Screenshot 1](https://github.com/DukeWilki/Note-Taker/blob/master/assets/index.jpg)
-![Screenshot 2](https://github.com/DukeWilki/Note-Taker/blob/master/assets/notes.jpg)
+![Screenshot 1](https://github.com/DukeWilki/Note-Taker/blob/main/assets/index.jpg)
+![Screenshot 2](https://github.com/DukeWilki/Note-Taker/blob/main/assets/notes.jpg)
 
 ## License
 This application has MIT License applied.
