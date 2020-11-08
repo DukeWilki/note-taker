@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { stringify } = require('querystring');
 const { v4: uuidv4 } = require('uuid');
 // ===============================================================================
 // ROUTING
@@ -61,15 +62,32 @@ module.exports = function(app) {
 // })
 
 
-
-
-  app.delete("/api/index/:id", function(req, res) {
-    console.log("tyring to delete"+ req.params.id);
-    var deleter = notes.filter(note => note.id !== parseInt(req.params.id)); 
-    fs.writeFileSync(__dirname + '/../db/db.json', JSON.stringify(deleter))
-    notes = deleter;
-    res.json(true);
+app.delete("/api/notes/:id", function(req, res) {
+  const id = req.params.id
+  console.log(id);
+  // note to be deleted as per uuid ref
+  // const deleteNote = :id
+  // search for UUID in db.json
+  const jsonData = fs.readFileSync(__dirname + '/../db/db.json', 'utf8');
+  const notes = JSON.parse(jsonData) || [];
+  // if not found - error
+  const filtered = notes.filter((note)=>{
+    return note.id !== id
+  } )
+  // if found, delete from db.json
+  fs.writeFileSync(__dirname + '/../db/db.json', JSON.stringify(filtered));
+  // retun new db.json
+  res.json(filtered);
 });
+
+
+//   app.delete("/api/notes/:id", function(req, res) {
+//     console.log("tyring to delete"+ req.params.id);
+//     var deleter = note => note.id !== req.params.id; 
+//     fs.writeFileSync(__dirname + '/../db/db.json', JSON.stringify(deleter))
+//     notes = deleter;
+//     res.json(true);
+// });
 
   // app.delete('/api/notes/:id', (req, res) => {
   //   // 
